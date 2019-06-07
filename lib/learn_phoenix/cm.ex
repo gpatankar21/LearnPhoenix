@@ -12,4 +12,14 @@ defmodule LearnPhoenix.CM do
     |> build_contract
     |> Repo.insert
   end
+
+  def change_contract(%Contract{} = contract) do
+    Contract.changeset(contract, %{})
+  end
+  
+  def update_contract(contract, attrs) do
+    contract
+    |> Contract.changeset(attrs)
+    |> Repo.update
+end
 end

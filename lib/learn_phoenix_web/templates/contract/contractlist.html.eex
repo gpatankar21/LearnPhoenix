@@ -1,0 +1,33 @@
+<html>
+<body>
+<center>
+<h1>My Contracts</h1><br>
+<a class="btn btn-primary" href="/addcontract" role="button">Add Contract</a>
+<%= if Enum.empty?(@contracts) do %>
+<p>No Contracts to show</p>
+<% else %>
+<table class="table">
+<thead>
+<tr>
+<th>Vendor</th>
+<th>Category</th>
+<th>Costs</th> 
+<th>Ends On</th>
+</tr>
+</thead>
+<tbody>
+<%= for item <- @contracts do %>
+<tr>
+<td><%= item.vendor %></a></td>
+<td><%= item.category %></td>
+<td>$ <%= item.cost %></td>
+<td><%= item.endson %></td>
+<td><%= link "View Contract",to: contract_path(@conn, :viewcontract, item) %></td>
+</tr>
+<% end %>
+</tbody>
+</table>
+<% end %>
+</center>
+</body>
+</html>

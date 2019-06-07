@@ -8,7 +8,6 @@ defmodule LearnPhoenix.CM.Contract do
     field :cost, :decimal
     field :endson, :date
     field :vendor, :string
-
     timestamps()
   end
 

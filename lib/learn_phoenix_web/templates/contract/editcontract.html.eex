@@ -1,0 +1,26 @@
+<h1>Edit Contract</h1>
+<%= form_for @contract_changeset, contract_path(@conn, :updatecontract, @contract), fn f -> %>
+  <div class="form-group">
+    <%= label f, :Vendor, class: "control-label" %>
+    <%= select f, :vendor, ["Vodafone", "O2", "Vattenfall", "McFir", "Sky"],
+  prompt: "Select Vendor", class: "form-control" %>
+    <%= error_tag f, :vendor %>
+  </div>
+  <div class="form-group">
+    <%= label f, :Category, class: "control-label" %>
+    <%= select f, :category, ["Vodafone-Internet": "Internet","Vodafone-DSL": "DSL", "Vodafone-Phone": Phone, "Vodafone-Mobile-Phone": "Mobile Phone","O2-Internet": "Internet","O2-DSL": "DSL","Vattenfall-Electricity": "Electricity","Vattenfall-Gas": "Gas","McFit-Gym": "Gym","Sky-Paid-Tv": "Paid Tv"],
+  prompt: "Select Vendor", class: "form-control" %>
+    <%= error_tag f, :category %>
+  </div>
+  <div class="form-group">
+    <%= label f, :Costs, class: "control-label" %>
+    <%= number_input f, :cost, class: "form-control" %>
+    <%= error_tag f, :cost %>
+  </div>
+  <div class="form-group">
+    <%= label f, :Ends_On, class: "control-label" %>
+    <%= date_select f, :endson, class: "form-control", id: "datefield"%>
+    <%= error_tag f, :endson %>
+  </div>
+<%= submit "Update Contract", class: "btn btn-primary" %>
+<% end %>

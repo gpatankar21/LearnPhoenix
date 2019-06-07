@@ -23,11 +23,16 @@ defmodule LearnPhoenixWeb.Router do
     post "/register", RegistrationController, :create
     get "/login", SessionController, :new
     post "/login", SessionController, :create
-    get "/contractlist", PageController, :contractlist
-    post "/contractlist", PageController, :contractlist
+    get "/contractlist", ContractController, :contractlist
+    post "/contractlist", ContractController, :contractlist
     get "/logout", SessionController, :delete
     get "/addcontract", ContractController, :newcontract
     post "/addcontract", ContractController, :createcontract
+    get "editcontract/:id", ContractController, :editcontract
+    get "viewcontract/:id", ContractController, :viewcontract
+    get "deletecontract/:id", ContractController, :deletecontract
+    put "updatecontract/:id", ContractController, :updatecontract
+    put "deletecontract/:id",ContractController, :deletecontract
   end
 
   # Other scopes may use custom stacks.

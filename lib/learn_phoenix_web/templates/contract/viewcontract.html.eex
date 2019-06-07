@@ -1,0 +1,27 @@
+<html>
+<body>
+<center>
+<h1>View Contract</h1><br>
+<table class="table">
+<thead>
+<tr>
+<th>Vendor</th>
+<th>Category</th>
+<th>Costs</th> 
+<th>Ends On</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><%= @contract.vendor %></a></td>
+<td><%= @contract.category %></td>
+<td>$ <%= @contract.cost %></td>
+<td><%= @contract.endson %></td>
+</tr>
+</tbody>
+</table>
+<%= link "Edit Contract",to: contract_path(@conn, :editcontract, @contract.id) %><br>
+<%= link "Delete Contract",to: contract_path(@conn, :deletecontract, @contract.id)%>
+</center>
+</body>
+</html>

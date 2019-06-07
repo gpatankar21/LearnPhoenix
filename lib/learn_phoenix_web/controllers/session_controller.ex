@@ -17,7 +17,7 @@ defmodule LearnPhoenixWeb.SessionController do
         |> put_session(:user_id, user.id)
         |> configure_session(renew: true)
         |> put_flash(:info, "Login successful")
-        |> redirect(to: page_path(conn, :contractlist))
+        |> redirect(to: contract_path(conn, :contractlist))
     end
   end
   def delete(conn, _) do
