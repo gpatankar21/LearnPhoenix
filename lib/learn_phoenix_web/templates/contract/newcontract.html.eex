@@ -1,16 +1,103 @@
 <h1>New Contract</h1>
+<script>
+function check()
+{
+  var Vodafone=["Internet", "DSL", "Phone", "Mobile Phone"]
+  var O2=["Internet", "DSL"]
+  var Vattenfall=["Electricity","Gas"]
+  var McFir=["Gym"]
+  var Sky=["Paid-Tv"]
+
+  vendor=document.getElementById("vendor")
+  category=document.getElementById("category")
+  if(vendor.value=="Vodafone")
+  { 
+    var select = document.getElementById('category').options.length;
+
+        for (var i = 0; i < select; i++) {
+            document.getElementById('category').options.remove(i);
+        }
+
+        for (var i = 0; i < Vodafone.length; i++) {
+            var newSelect = document.createElement('option');
+            selectHTML = "<option value='" + Vodafone[i] + "'>" + Vodafone[i] + "</option>";
+            newSelect.innerHTML = selectHTML;
+            document.getElementById('category').add(newSelect);
+        }
+  }
+  else if(vendor.value=="O2")
+  {   
+    var select = document.getElementById('category').options.length;
+
+        for (var i = 0; i < select; i++) {
+            document.getElementById('category').options.remove(i);
+        }
+
+        for (var i = 0; i < O2.length; i++) {
+            var newSelect = document.createElement('option');
+            selectHTML = "<option value='" + O2[i] + "'>" + O2[i] + "</option>";
+            newSelect.innerHTML = selectHTML;
+            document.getElementById('category').add(newSelect);
+        }
+  }
+  else if(vendor.value=="Vattenfall")
+  {
+    var select = document.getElementById('category').options.length;
+
+        for (var i = 0; i < select; i++) {
+            document.getElementById('category').options.remove(i);
+        }
+
+        for (var i = 0; i < Vattenfall.length; i++) {
+            var newSelect = document.createElement('option');
+            selectHTML = "<option value='" + Vattenfall[i] + "'>" + Vattenfall[i] + "</option>";
+            newSelect.innerHTML = selectHTML;
+            document.getElementById('category').add(newSelect);
+        }
+  }
+  else if(vendor.value=="McFir")
+  {
+    var select = document.getElementById('category').options.length;
+
+        for (var i = 0; i < select; i++) {
+            document.getElementById('category').options.remove(i);
+        }
+
+        for (var i = 0; i < McFir.length; i++) {
+            var newSelect = document.createElement('option');
+            selectHTML = "<option value='" + McFir[i] + "'>" + McFir[i] + "</option>";
+            newSelect.innerHTML = selectHTML;
+            document.getElementById('category').add(newSelect);
+        }
+  }
+  else
+  {
+    var select = document.getElementById('category').options.length;
+
+        for (var i = 0; i < select; i++) {
+            document.getElementById('category').options.remove(i);
+        }
+
+        for (var i = 0; i < Sky.length; i++) {
+            var newSelect = document.createElement('option');
+            selectHTML = "<option value='" + Sky[i] + "'>" + Sky[i] + "</option>";
+            newSelect.innerHTML = selectHTML;
+            document.getElementById('category').add(newSelect);
+        }
+  }
+}
+</script>
 <%= form_for @changeset, contract_path(@conn, :createcontract), [as:
   :contract, id: "contract-form"], fn f -> %>
   <div class="form-group">
     <%= label f, :Vendor, class: "control-label" %>
-    <%= select f, :vendor, ["Vodafone", "O2", "Vattenfall", "McFir", "Sky"],
-  prompt: "Select Vendor", class: "form-control" %>
+    <%= select f, :vendor, ["Vodafone", "O2", "Vattenfall", "McFir", "Sky"] , onchange: "check()",
+  prompt: "Select Vendor", id: "vendor", class: "form-control" %>
     <%= error_tag f, :vendor %>
   </div>
   <div class="form-group">
     <%= label f, :Category, class: "control-label" %>
-    <%= select f, :category, ["Vodafone-Internet": "Internet","Vodafone-DSL": "DSL", "Vodafone-Phone": Phone, "Vodafone-Mobile-Phone": "Mobile Phone","O2-Internet": "Internet","O2-DSL": "DSL","Vattenfall-Electricity": "Electricity","Vattenfall-Gas": "Gas","McFit-Gym": "Gym","Sky-Paid-Tv": "Paid Tv"],
-  prompt: "Select Vendor", class: "form-control" %>
+    <%= select f, :category,[], prompt: "Select Vendor", id: "category", class: "form-control" %>
     <%= error_tag f, :category %>
   </div>
   <div class="form-group">

@@ -7,7 +7,6 @@ defmodule LearnPhoenix.Repo.Migrations.CreateContracts do
       add :category, :string
       add :cost, :decimal
       add :endson, :date
-
       timestamps()
     end
 

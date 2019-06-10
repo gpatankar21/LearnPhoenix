@@ -10,7 +10,6 @@ defmodule LearnPhoenix.CM.Contract do
     field :vendor, :string
     timestamps()
   end
-
   @doc false
   def changeset(contract, attrs) do
     contract

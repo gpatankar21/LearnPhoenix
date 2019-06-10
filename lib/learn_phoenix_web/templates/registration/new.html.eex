@@ -13,8 +13,44 @@
   </div>
   <div class="form-group">
     <%= label f, :Password, class: "control-label" %>
-    <%= text_input f, :pass, class: "form-control" %>
+    <%= password_input f, :pass, class: "form-control", onkeyup: "validate()", id: "pass"%>
+    <span id="pdisplay"></span>
     <%= error_tag f, :pass %>
   </div>
+  <div class="form-group">
+    <%= label f, :Confrim_Password, class: "control-label" %>
+    <%= password_input f, :pass, class: "form-control", onkeyup: "validate()", id: "rpass"%>
+    <%= error_tag f, :confpass %>
+    <span id="rdisplay"></span>
+  </div>
+  <script>
+        function validate()    
+        {
+            if(rpass.value==="")
+        {
+            var rdisplay=document.getElementById("rdisplay");
+            rdisplay.innerHTML="Re-Enter Password";
+            rdisplay.style.color="red";
+        }
+        else
+        {
+               if(pass.value===rpass.value)
+               {
+            var rdisplay=document.getElementById("rdisplay");
+            rdisplay.innerHTML="Password matched";
+            rdisplay.style.color="green";
+               }
+               else
+               {
+            var rdisplay=document.getElementById("rdisplay");
+            rdisplay.innerHTML="Password not matched";
+            rdisplay.style.color="blue";
+                   
+                   
+               }
+                
+        }
+        }
+        </script>
 <%= submit "Register", class: "btn btn-primary" %>
 <% end %>
